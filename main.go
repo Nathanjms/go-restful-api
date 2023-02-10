@@ -24,11 +24,12 @@ var albums = []album{
 
 func main() {
 	router := gin.Default()
+	router.SetTrustedProxies([]string{"127.0.0.1"})
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumById)
 	router.POST("/albums", postAlbums)
 
-	router.Run("localhost:8080")
+	router.Run()
 }
 
 // getAlbums responds with the list of all albums as JSON.
